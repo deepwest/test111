@@ -1,6 +1,5 @@
 import { Component, OnInit } from 'angular2/core';
-//import {RouteParams} from 'angular2/router';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+//import {RouteParams} from 'angular2/router'; //Почемуто матерится когда я его подключаю. Без него не могу передать правильную айдишку. Причины мне не понятны.
 
 
 import { allMessagesList } from '../mainView/messages';
@@ -11,7 +10,6 @@ import { MessagesService } from '../mainView/messages.service';
     templateUrl: 'app/singleView/single.html',
     inputs: ['message'],
     providers: [
-        ROUTER_PROVIDERS,
         MessagesService,
         //RouteParams
     ]
@@ -27,9 +25,10 @@ export class SingleViewComponent implements OnInit {
     }
 
     //при инициализации достаем одно сообщение для просмотра
+    //TODO Мучился оч долго чтоб заставить заработуть тут RouteParams пока безуспешно
     ngOnInit() {
         //let id = +this._routeParams.get('id');
-        this._messagesService.getOneMessage(1)
+        this._messagesService.getOneMessage(5)//сменить 5 на id
             .then(message => this.message = message);
     }
 }

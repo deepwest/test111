@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../mainView/messages.service'], function(exports_1) {
+System.register(['angular2/core', '../mainView/messages.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +8,12 @@ System.register(['angular2/core', 'angular2/router', '../mainView/messages.servi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, messages_service_1;
+    var core_1, messages_service_1;
     var SingleViewComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (router_1_1) {
-                router_1 = router_1_1;
             },
             function (messages_service_1_1) {
                 messages_service_1 = messages_service_1_1;
@@ -27,10 +24,11 @@ System.register(['angular2/core', 'angular2/router', '../mainView/messages.servi
                     this._messagesService = _messagesService;
                 }
                 //при инициализации достаем одно сообщение для просмотра
+                //TODO Мучился оч долго чтоб заставить заработуть тут RouteParams пока безуспешно
                 SingleViewComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     //let id = +this._routeParams.get('id');
-                    this._messagesService.getOneMessage(1)
+                    this._messagesService.getOneMessage(5) //сменить 5 на id
                         .then(function (message) { return _this.message = message; });
                 };
                 SingleViewComponent = __decorate([
@@ -39,7 +37,6 @@ System.register(['angular2/core', 'angular2/router', '../mainView/messages.servi
                         templateUrl: 'app/singleView/single.html',
                         inputs: ['message'],
                         providers: [
-                            router_1.ROUTER_PROVIDERS,
                             messages_service_1.MessagesService,
                         ]
                     }), 

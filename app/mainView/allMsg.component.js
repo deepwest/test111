@@ -39,8 +39,13 @@ System.register(['angular2/core', 'angular2/router', './messages.service', '../s
                 //Функция наполняет переменную messages даными из таблици при запуске
                 AllMsgComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    this._messageService.getMessages()
-                        .then(function (messages) { return _this.messages = messages; });
+                    //TODO : Повесить на ивент
+                    setTimeout(function () {
+                        _this._messageService.getMessages()
+                            .then(function (messages) { return _this.messages = messages; });
+                    }, 2000);
+                    //this._messageService.getMessages()
+                    //    .then(messages => this.messages = messages);
                 };
                 //функция записывает введенные даные в таблицу
                 AllMsgComponent.prototype.saveData = function (titleName, messageAdded, id) {

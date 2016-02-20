@@ -34,8 +34,14 @@ export class AllMsgComponent implements OnInit {
 
     //Функция наполняет переменную messages даными из таблици при запуске
     ngOnInit() {
-        this._messageService.getMessages()
-            .then(messages => this.messages = messages);
+        //TODO : Повесить на ивент
+        setTimeout(() => {
+            this._messageService.getMessages()
+                .then(messages => this.messages = messages);
+        },2000);
+        //this._messageService.getMessages()
+        //    .then(messages => this.messages = messages);
+
     }
 
     //функция записывает введенные даные в таблицу
