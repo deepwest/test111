@@ -1,0 +1,27 @@
+<div *ngFor="#Message of messages">
+    <div (click)="onSelect(Message)" class="clickable">{{Message.title}}</div>
+    <div>{{Message.mainMessage}}</div>
+    <div>{{Message.date}}</div>
+    <hr>
+</div>
+<div class="input-decorator">
+    <button (click)="gotoDetail()" *ngIf="selectedMessage">Детали</button>
+</div>
+<div class="input-decorator">
+    <div><label>Заголовок</label><br>
+        <input type="text" [(ngModel)]="titleName">
+    </div>
+    <div><label>Айдишка</label><br>
+        <input type="text" [(ngModel)]="id">
+    </div>
+</div>
+<div class="input-decorator"><label>Текст сообщения</label><br>
+    <textarea [(ngModel)]="messageAdded"></textarea>
+</div><br>
+<div class="input-decorator">
+    <button (click)="saveData(titleName,messageAdded,id)">Оставить</button>
+</div>
+
+<div>
+    <single-detail >Ниче не выбрано</single-detail>
+</div>
